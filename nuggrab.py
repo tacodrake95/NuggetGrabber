@@ -3,12 +3,15 @@ import os
 import urllib.request
 import sys
 
-n = len(sys.argv)
 
 ranges = [1,1000]
 
-for i in range(1,n):
-    ranges[i-1] = int(sys.argv[i])
+n = len(sys.argv)
+if n == 2:
+    ranges[0] = int(sys.argv[1])
+    ranges[1] = ranges[0]
+elif n == 3:
+    ranges = sys.argv[1:]
 
 url = "https://market.x.immutable.com/assets/0x3d88c23d2d93d1f0391d2062e0189b99b0ce8dcb/%s"
 pat = 'https://cdn.niftynuggets.org/nuggets/.*\"'
@@ -35,6 +38,7 @@ for i in range(ranges[0],ranges[1] + 1):
                print("Success for nugget #%s!" % i)
     except:
         print("Nugget #%s nonexistent or unminted" % i)
-    print(str((i - ranges[0])/(ranges[1] - ranges[0]) * 100) + "%")
+    if ranges[0] != ranges[1]:
+        print(str((i - ranges[0])/(ranges[1] - ranges[0]) * 100) + "%")
         
 os.remove("current.txt")
