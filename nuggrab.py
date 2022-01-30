@@ -13,7 +13,10 @@ if n == 2:
 elif n == 3:
     ranges[0] = int(sys.argv[1])
     ranges[1] = int(sys.argv[2])
+elif n == 1:
+    print("Using default configuration")
 else:
+    print("Too many arguments")
     sys.exit()
 
 url = "https://market.x.immutable.com/assets/0x3d88c23d2d93d1f0391d2062e0189b99b0ce8dcb/%s"
