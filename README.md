@@ -5,4 +5,4 @@ Usage:
 
 nuggrab.py \<start\> \<end\>
 
-to search for nuggets in the range of <start> to <end>
+to search for nuggets in the range of \<start\> to \<end\>
