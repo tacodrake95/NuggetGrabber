@@ -19,14 +19,13 @@ IMGURLs = []
 
 print("Looking for nuggets from range %s to %s" % (ranges[0], ranges[1]))
 
-for i in range(ranges[0],ranges[1]):
-    print(str(i/ranges[1]) + "%")
+for i in range(ranges[0],ranges[1] + 1):
     try:
         urllib.request.urlretrieve(url%i, 'current.txt')
         toRead = open('current.txt', 'r')
         Lines = toRead.readlines()
         toRead.close()
-        os.remove("current.txt")
+
         for line in Lines:
             m = re.search(pat,line)
             if(type(m) != NoneType):
@@ -36,3 +35,6 @@ for i in range(ranges[0],ranges[1]):
                print("Success for nugget #%s!" % i)
     except:
         print("Nugget #%s nonexistent or unminted" % i)
+    print(str((i - ranges[0])/(ranges[1] - ranges[0]) * 100) + "%")
+        
+os.remove("current.txt")
