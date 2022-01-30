@@ -11,7 +11,8 @@ if n == 2:
     ranges[0] = int(sys.argv[1])
     ranges[1] = ranges[0]
 elif n == 3:
-    ranges = sys.argv[1:]
+    ranges[0] = int(sys.argv[1])
+    ranges[1] = int(sys.argv[2])
 
 url = "https://market.x.immutable.com/assets/0x3d88c23d2d93d1f0391d2062e0189b99b0ce8dcb/%s"
 pat = 'https://cdn.niftynuggets.org/nuggets/.*\"'
@@ -20,7 +21,10 @@ NoneType = type(None)
 
 IMGURLs = []
 
-print("Looking for nuggets from range %s to %s" % (ranges[0], ranges[1]))
+if ranges[0] == ranges[1]:
+    print("Getting nugget with ID %s" % ranges[0])
+else:
+    print("Looking for nuggets in range %s-%s" % (ranges[0], ranges[1]))
 
 for i in range(ranges[0],ranges[1] + 1):
     try:
